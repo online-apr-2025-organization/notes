@@ -1,0 +1,72 @@
+class
+	- blueprint/sketch/template/layout/design/
+	- a class can contain
+		- properties/attributes/instance variables/fields
+			- provides the state of the object
+		- methods/member functions
+			- action performed by the class
+		- a inner class
+
+
+class Person{
+	String name;
+	int age;
+	String gender;
+	double height;
+	double weight;
+
+	boolean walk() { 
+
+        }
+
+	boolean speak() {
+	
+
+	} 
+}
+
+
+
+object
+	- an instance of the class
+	- we can create any number of objects for a class
+	- these objects occupy memory
+	
+variables and it's memory allocation
+------------------------------------
+- local variables are variables declared within a method
+- instance variables are variables declared outside the method within the class
+
+- memory for local variables will be allocated in stack
+- memory for instance variables will be allocated in heap
+
+- life time for local variables is from when the method is called until the method is over
+- life time for instance variable is from when the object is created until the garbage collector runs and removes that object from heap if there are no references to the object
+
+
+- any object in heap which does not have a refernce to it is ready for garbage collection
+
+constructors
+------------
+	- meant for intiliazing instance variables of the object
+	- if we do not provide a constructor for a java class, then the java compiler automatically provides the default constructor
+	- a default constructor does not have any arguments
+	- the moment we provide a constructor for the class, the default constructor is no longer provided
+
+	- a constructor
+		- is a special method
+		- has the same name of that of the class name
+		- does not return anything, not even void
+		- is not called explicitly, it is called automatically when an object is created
+
+	- we can have more than one constructor in a  class, provided the constructors are overloaded
+	- constructor overloading means multiple constructors with different arguments
+
+this keyword
+------------
+	- this refers to the current object
+
+this()
+-----
+	- used for constructor chaining within a class
+	- constructor chaining means calling one constructor from another constructor
