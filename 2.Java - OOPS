@@ -1,0 +1,54 @@
+OOPS concepts
+-------------
+4 main pillars of OOPS
+
+A - Abstraction
+P - Polymorphism
+I - Inheritance
+E - Encapsulation
+
+
+Inheritance
+-----------
+	- one class can extend another class
+	- the class that is extended is called base class/super class/parent class
+	- the class which extends is called derived class/sub class/child class
+	- the moment we extend a class the child class can access all the members of the parent class as if it were its own
+	- we get code reusability
+	- we can inherit using extends keyword
+	- make sure that the is-a relation is satisfied
+
+	- types of inheritance
+	----------------------
+		- single level inheritance
+		- multilevel inheritance
+			class A{}
+			class B extends A{}
+			class C extends B{}
+		- hirarchial inheritance
+		- multiple inheritance - not supported in java
+
+			class A{}
+			class B{}
+			class C extends A,B{} ---->this is multiple inheritance
+Polymorphism
+------------
+	- more than one form
+	- 2 types of polymorphism
+		- compile time polymorphism
+			eg : method overloading
+			- 2 or more methods with the same name but different parameters
+			- we do not consider the return type in method overloading
+
+				int mark = 20;
+				System.out.println(mark);
+
+				boolean flag = false;
+				System.out.println(flag);
+		- runtime polymorphism
+			eg: method overriding
+			- inheritance is a pre-requisite of method overriding
+			- same method name and signature in parent class and child class
+			- when we create an object of the child class and call the method,the method in the child overrides/masks the method of the parent class and the method in the child class is called
+			
+			
