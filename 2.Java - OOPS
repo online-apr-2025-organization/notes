@@ -50,5 +50,31 @@ Polymorphism
 			- inheritance is a pre-requisite of method overriding
 			- same method name and signature in parent class and child class
 			- when we create an object of the child class and call the method,the method in the child overrides/masks the method of the parent class and the method in the child class is called
-			
+Encapsulation
+-------------
+	- wrapping up of data members and member functions into a single unit
+	- hiding of data
+	- we make use of access modifiers - private , default/no modifier, protected, public
+	- these access modifiers are used in front of the members of a class
+Abstraction
+-----------
+	- highlighting of essential features
+	- achieved using abstract classes and interfaces
+	- abstract classes
+		- contains atleast one abstract method
+		- abstract methods donot have body definition
+		- are incomplete classes
+		- we cannot create an object for abstract classes
+		- are meant to be inherited
+		- the sub class should provide the implementation of the abstract method and is called complete/concrete class
+	- interfaces
+		- an interface can contain
+			- public abstract methods ( by default declared methods are public and abstract)
+			- public static final variables( by default variables are public static and final)
+			- default methods(methods with method body)
+			- static methods(static methods with method body)
+		- cannot create object for an interface
+		- interfaces are meant to implemented by a class and this class should provide the implementation of the abstract methods of the interface
+		- interfaces do not give is-a relation to the class that implements it
+		
 			
