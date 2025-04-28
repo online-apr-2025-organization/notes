@@ -1,0 +1,80 @@
+non-access modifiers 
+---------------------
+final
+-----
+	- in front of a variable
+		- makes it a constant
+			- eg :  final double PI = 3.14;
+				System.out.println(PI);
+				PI = 3.1; // compiler error
+
+				final int MIN_AGE = 18;
+	- in front of a method
+		- cannot override a final method
+
+	- in front of a class
+		- cannot extend a final class
+
+can I use final keyword in front of local variables?
+
+native
+------
+	- in front of methods
+		- native methods have code writtern in other than java, mostly c and c++
+
+synchronized
+------------
+	- used in multithreading
+	- synchronized methods
+
+	- synchronized blocks
+
+transient
+----------
+	- transient variables
+	- transient variables are not serialized
+
+static
+------
+	- variable
+		- belong to the class and not to a particular object
+		- take a common memory unlike instance variables
+		- all objects share that common memory
+		- when is memory for instance variable allocated?
+			- when we create an object for the class
+		- now when is the memory for static variables allocated?
+			- whenever the jvm encounters the class name
+				- the class is loaded into the memory
+				- memory for static variables are creates ( this means that memory for static variables are created much before the objects are even creates)
+				- we can access static variables using the class name. Eg : Room.height
+	- method
+		- static methods can be accessed with the class name
+
+		- can a static method access static members of the class ? YES
+		- can a static method access non-static members of the class ? NO
+		- can a non-static method access static members of the class ? YES
+		- can a non-static method access non-static members of the class ? YES
+
+	- class
+		- only inner classes can be static classes
+	- block
+		- how do we initialize static variables? we know that constructors are used to initialize instance variables
+			- we use static blocks
+	
+	sequence
+	---------
+		when the jvm runs and encounters the class name for the first time 
+		1. the class is loaded into the memory
+		2. memory for static variables are creates
+		3. the static blocks are automatically called in sequence
+		whenever an object is create using the new keyword
+		4. memory for instance variables is allocated
+		5. constructor is called
+
+arrays
+------
+	- arrays are objects in java
+	- we create arrays using new keyword
+	- arrays take memory in the heap
+	- we will see 1 dimensional array, 2 dimensional array, irregular/jagged 2 dimensional array
+	
