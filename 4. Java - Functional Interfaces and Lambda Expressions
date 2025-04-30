@@ -1,0 +1,20 @@
+functional interfaces
+---------------------
+	- interfaces which have only one abstract method
+	- can have any number of default and static methods and variables
+	- also known by name SAM(Single Abstract Method) interfaces. Eg: Runnable, Comparable
+	- we can annotate them with @FunctionalInterface annotation
+
+3 ways to provide implementation for a functional interface
+-----------------------------------------------------------
+first way - conventional way 
+second way - anonymous classes
+third way - lambda expressions
+
+
+4 basic in-built functional interfaces given by java
+-----------------------------------------------------
+Function
+Consumer
+Predicate
+Supplier
