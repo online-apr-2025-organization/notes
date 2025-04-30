@@ -1,0 +1,26 @@
+Project Details
+---------------
+SOLID principles
+	S - Single responsibility
+	O - 
+	L - 
+	I - 
+	D - 
+POJO - Plain Old Java Object / DTO - Data Transfer Objects / TO - Transfer Objects / Model
+
+3 layered project
+-----------------
+	- presentation layer
+		- UI
+		- Input/output
+		- this layer calls the service layer in case of any logic to be performed
+		- in BMS Project I have used the main method as the presentation layer
+	- service/business logic layer
+		- contains the logic
+		- there should no input and output statements
+		- if the service layer needs to interact with the data store, it will call the methods of the dao layer
+	- dao(Data Access Object) layer
+		- responsible for interacting with the data store
+		- initially our data store will be a collection, this is a temporary, once we know JDBC we will use 
+JDBC to interact with an external Database
+		- the dao class will be abstracted through an interface
