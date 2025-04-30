@@ -77,4 +77,18 @@ arrays
 	- we create arrays using new keyword
 	- arrays take memory in the heap
 	- we will see 1 dimensional array, 2 dimensional array, irregular/jagged 2 dimensional array
-	
+
+destructor
+----------
+	- in java we override he finalize method if we want a destructor
+	- the finalize method is called just before the object is removed from heap
+	- we write de- initialize code in the finalize method
+
+class Test{
+	Test(){}
+	~Test(){}// this is the destructor in c++
+
+	@Override
+	protected void finalize(){} // this is the destructor in java
+}
+
