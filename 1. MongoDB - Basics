@@ -1,0 +1,55 @@
+MongoDB
+-------
+	- document oriented NoSQL Database
+	- scalability, flexibility, performance
+	- data is stored is JSON document structure format
+Terminologies
+-------------
+Database
+---------
+	- it is a container/group of collections
+	- each DB has its own set of files
+	- a Single MongoDB server has many DB
+Collection
+-----------
+	- it is a group of documents
+	- collection can be compared to Tables in RDBMS
+	- unlike RDBMS schema, collections do not have schema
+	- a collection resides inside a single DB
+	- within the collection we can have many fields
+Document
+--------
+	- a collection can contain many documents
+	- documents are equivalent to records in RDBMS
+Field
+-----
+	- a document can contain many fields
+	- fields are name value pairs
+	- fields are equivalent to columns in RDBMS
+
+CRUD
+-----
+
+	db.help();
+	db.coll.help();
+C - Create
+
+	db.coll.insertOne();
+	db.coll.insertMany();
+	db.createCollection();
+
+R - Read
+	db.coll.find();
+	db.coll.find().pretty();
+	db.coll.findOne();
+	db.student_collection.find({_id: 2004});
+
+U - Update
+	db.coll.updateOne();
+	db.coll.updateMany();
+	db.coll.replaceOne();
+	db.student_collection.updateMany({_id: 2005},{$set: {stud_mark:45}});
+
+D - Delete
+	db.coll.deleteOne();
+	db.coll.deleteMany();
