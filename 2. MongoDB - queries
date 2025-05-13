@@ -1,0 +1,142 @@
+data types in mongodb
+----------------------
+	- the documents are stored in BSON(Binary JSON) format
+	- BSON is the binary encoded format of JSON
+
+commonly used
+--------------
+string
+integer
+double
+Boolean
+null
+array
+object ( embedded document)
+Object id
+date
+   - Date() - returns the current date in string format
+   - new Date() - returns a date object
+
+ObjectId()
+----------
+- 12 bytes long
+- feature
+	- Uniqueness
+	- Timestamp
+	- Efficiency
+- format
+	- first 4 bytes represent unix timestamp of the document
+	- next 3 bytes are the machine ID on which the mongoDB server is running
+	- next 2 bytes is the process ID
+	- the last 3 bytes is used for incrementing object id
+
+sample> var id = new ObjectId();
+
+sample> id.getTimestamp();
+ISODate('2025-05-13T04:59:26.000Z')
+
+Operators
+---------
+comparison operators
+	- $gt, $lt, $eq, $lte, $gte, $ne, $in, $nin
+	eg:
+		db.student_collection.find({stud_mark: {$gt: 50}});
+		db.student_collection.find({stud_mark: {$lt: 50}});
+		db.student_collection.find({stud_mark: {$in: [50, 55, 60]}});
+logical operators
+	- $and, $or, $nor, $not
+	eg:
+		db.student_collection.find({$and: [{stud_mark: {$gte: 50}}, {stud_mark: {$lte: 60}}]});
+
+		display students whose mark is not in the range 50 to 60
+		db.student_collection.find({$and: [{stud_mark: {$not: {$gte: 50}}}, {stud_mark: {$not: {$lte: 60}}}]});
+
+		db.student_collection.find({stud_mark: {$not: {$gte: 50}}});
+
+arithmetic operators
+	- $add, $subtract, $multiply, $divide, $abs, $floor, $ceil, $mod, $sqrt, $pow, $exp, $log
+
+	eg:
+	db.employee.aggregate([{$project: {empName: 1, empSalary: {$add: ["$empFirstSalary", "$empSecondSalary"]}}}]);
+	db.employee.aggregate([{$match: {empDepartment: 'IT'}},{$project: {empName: 1, empSalary: {$add: ["$empFirstSalary", "$empSecondSalary"]}}}]);
+	db.employee.aggregate([{$match: {empDepartment: 'HR'}},{$project: {empName: 1, sqrtSalary: {$sqrt: "$empFirstSalary"}}}]);
+
+field update operators
+	- $max, $min, $inc, $mul, $currentDate
+
+array operators
+	- $pull, $pop, $pullAll, $push, positional operator - $, $sort, $slice
+
+string operators
+	- $concat, $strcasecmp, $toUpper, $toLower, $substrCP
+		db.employee.aggregate([{$project: {empDepartment: {$toUpper: "$empName"}}}]);
+		db.employee.aggregate([{$project: {empName: {$toUpper: "$empName"}, empDepartment: 1, _id: 0}}]);
+		db.employee.aggregate([{$project: {empName: {$substrCP: ["$empName", 0, 3]}, empDepartment: 1, _id: 0}}]);
+
+
+Aggregation framework
+---------------------
+helps with
+	- complex data transformation
+	- complex computation
+	- grouping, filtering 
+	- and manipulating data
+	eg: db.employee.aggregate([{$project: {empName: 1, empSalary: {$add: ["$empFirstSalary", "$empSecondSalary"]}}}]);
+	- aggregation pipeline methods
+		- $group - group your document and perform aggregation
+			 db.employee.aggregate([{$group: {_id: "$empDepartment", minimumSalaryInEachDept: { $min: "$empFirstSalary"}}}]);
+		- $project - project the required fields
+			db.employee.aggregate([{$project: {empName: 1, empSalary: {$add: ["$empFirstSalary", "$empSecondSalary"]}}}]);
+		- $match - restrict documents based on condition
+			db.student_collection.aggregate([{$match: {stud_mark: {$gt: 50}}}]);
+		- $sort - sort the document based on the field specified
+			db.student_collection.aggregate([{$sort: {stud_mark: 1}}]);
+			db.student_collection.aggregate([{$sort: {stud_mark: -1}}]);
+		- $limit - limit the number of documents returned
+			db.student_collection.aggregate([{$limit: 2}]);
+ 		
+
+ways to provide relation between collections
+--------------------------------------------
+Embedded Document Model
+------------------------
+person document
+{
+	_id: 
+	person_firstname: "abc",
+	person_lastname: "xyz"
+}
+
+address document
+{
+	address_line1: "XXXX",
+	address_city: "Pune",
+	address_pincode: 202222
+	person_firstname: "abc"
+}
+
+person document
+{
+	_id: 
+	person_firstname: "abc",
+	person_lastname: "xyz",
+	address: {
+			address_line1: "XXXX",
+			address_city: "Pune",
+			address_pincode: 202222
+		}
+}
+
+eg:
+db.person.find({'address.address_city': 'Pune'}, {'name.first_name': 1, contact: 1});
+
+Reference Model
+---------------
+
+$lookup
+-------
+
+
+Cheat sheets
+------------
+
