@@ -1,0 +1,49 @@
+use sakila;
+show tables;
+select * from country;
+
+select * from film;
+select * from country;
+select * from city;
+select count(*) from actor;
+select count(*) from film_actor where film_id=1;
+
+-- display the city names of the country 'INDIA'
+select city from city where country_id = (select country_id from country where country='INDIA');
+-- display the number of film categories available
+select count(category_id) from category;
+
+-- actors acted in the movie 'ACADEMY DINOSAUR'. 
+-- display actors first name and last name
+select actor.first_name, actor.last_name 
+	from actor 
+    inner join film_actor on actor.actor_id = film_actor.actor_id
+    inner join film on film_actor.film_id=film.film_id
+    where film.title="ACADEMY DINOSAUR";
+    
+-- actors having first name 'Scarlett'
+select first_name, last_name from actor where first_name='SCARLETT';
+
+-- how many distinct actor last names are there?
+select count(distinct last_name) from actor;
+
+-- which actors' last names are not repeated?
+select last_name from actor group by last_name having count(*)=1;
+ 
+-- which actors' last names appear more than once?
+select last_name from actor group by last_name having count(*)>1;
+
+-- avg rental duration of all the films
+select avg(rental_duration) from film;
+
+-- avg rental duration of all the films in each category
+select film_category.category_id, avg(rental_duration) from film inner join film_category on film.film_id=film_category.film_id group by film_category.category_id;
+
+-- categories which dont have a film yet
+select * from category;
+select distinct category_id from film_category;
+select category_id, name from category where category_id not in (select distinct category_id from film_category);
+
+-- display film details from latest release to earlier release. make sure the film title is sorted.
+select film_id, title, description, release_year from film order by release_year desc, title asc;
+select distinct release_year from film;
