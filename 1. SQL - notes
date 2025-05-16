@@ -1,1 +1,137 @@
 
+5 categories of queries
+-----------------------
+	DDL - Data Definition Language
+		- deal with the structure of the table
+		- create database, drop database, rename, create table, alter table, drop table
+	DML - Data Manipulation Language
+		- deal with the manipulation of the data
+		- insert, update, delete
+	DQL - Data Querying Language
+		- deals with querying/fetching data from the DB
+		- select
+		- clauses of select query
+			- select
+			- from
+			- where
+			- group by
+			- having
+			- order by
+	TCL - Transaction Control Language
+		- deals with transaction in the DB
+		- rollback, commit
+	DCL - Data Control Language
+		- deals with granting and revoking permissions to users
+		 
+
+constraints
+-----------
+	primary key - done
+		- has to be unique
+		- cannot hold null
+		- are automatically indexed
+		- enforces entity integrity
+		- can I assign more than one column as primary key?
+			- separately they cannot be assigned as primary keys
+			- combined together they can be assigned and it is called as composite key
+
+			student
+			stud_id  stud_name
+			101
+			102
+
+			course
+			course_id  course_name
+			5001		CSC
+			5002		HR
+
+			student_courses
+			stud_id		course_id
+			101		5001
+			101		5002
+			102		5002
+
+			create table student_courses(
+				stud_id integer,
+				course_id integer,
+				primary key(stud_id, course_id)
+			);
+	not null - done
+	unique - done
+	check - done
+	default - done
+	foreign key - done
+		- enforces referential integrity
+		- the 2 tables enter into a relation
+		department
+		----------
+			dept_id(PK)
+			dept_name
+		employee
+		---------
+			emp_id(PK)
+			emp_name
+			emp_salary
+			emp_dept_id(FK)
+
+functions
+---------
+	- in built functions
+		- in general functions can be classified into 2 types
+			- scalar functions
+				- ucase(), lcase(), left(), right(), substr(),...
+				- sqrt(), pow(), floor(), ceil(),....
+				- current_time(), current_date(), datediff(), day(), month(), year(),....
+			- aggregate functions
+				- count(), min(), max(), avg(), sum()
+	- user defined functions
+		- have to work with PL/SQL
+
+group by
+--------
+	- find the total count of people
+		select count(*) from person_details;
+	- find the total count of people in each city
+		select per_city, count(per_city) from person_details group by per_city;
+	- find the average age of all the people - do not use age column
+		select avg(datediff(current_date(), dob) div 365) as computed_age from person_details;
+	- find the average age of all the people in each city - do not use age column
+		select per_city, avg(datediff(current_date(), dob) div 365) as computed_age from person_details group by per_city;
+	- find the total count of people in each city whose count is less than 3
+		select per_city, count(per_city) from person_details group by per_city having count(per_city) < 3;
+
+joins
+------
+	- inner join
+	- left join/ left outter join
+	- right join/ right outter join
+	- full join/ full outer join
+	- cross join
+	- self join - uses inner join
+
+
+relationship type between tables
+----------------------------
+one to one relation
+	- the foreign key can be on any table which is in the relation
+one to many relation
+	- the foreign key will be in the many side table
+many to one relation
+	- the foreign key will be in the many side table
+many to many relation
+	- eg: book and author
+		book---> book_id(pk), book_title, book_genre
+		author---> author_id(pk), author_name
+		book_author---> book_author_id(pk),book_id(fk), author_id(fk)
+
+relationship direction between tables
+--------------------------------------
+unidirectional
+bidirectional
+
+
+normalization
+-------------
+	1st NF
+	2nd NF
+	3rd NF
