@@ -1,4 +1,3 @@
-
 5 categories of queries
 -----------------------
 	DDL - Data Definition Language
@@ -22,6 +21,10 @@
 		- rollback, commit
 	DCL - Data Control Language
 		- deals with granting and revoking permissions to users
+		create user devloper1 identified by 'dev1'; 
+    		grant insert, update, delete, select on account to 'devloper1';
+    		revoke drop, alter on account from 'devloper1';
+		show grants for 'devloper1';
 		 
 
 constraints
@@ -132,6 +135,54 @@ bidirectional
 
 normalization
 -------------
+
+	
 	1st NF
+	------
+		- atomicity
 	2nd NF
+	------
+		- table should be in 1NF and no partial dependicies
+	book
+		book_id(pk)
+		book_title
+		book_published
+		book_price
+	
+	- always primary column should determine other non key columns
+	- or in other words we can all non-key column should be functionaly dependant on the entire primary key/composite and should not be partially dependant
+	eg:
+	---
+	customer_store
+		(customer_id, store_id)(PK)
+		customer_name
+		customer_mobile
+		store_city
+	after 2 NF
+	----------
+	customer
+		customer_id(PK)
+		customer_name
+		customer_mobile
+	store
+		store_id(PK)
+		store_city
+	customer_store
+		(customer_id(FK),store_id(FK))(PK)
+	
 	3rd NF
+	------
+		- has to be in 2NF and no transitive dependencies
+
+indexes
+-------
+    show tables;
+    select * from person_details;
+    create index idx_per_city on person_details(per_city);
+    create unique index idx_per_mobile on person_details(per_mobile);
+    desc person_details;
+    alter table person_details drop index idx_per_mobile; 
+
+    can I create a single index on multiple columns? - yes
+    what is the use case? - when these multiple columns are used together in the where clause
+
