@@ -1,0 +1,107 @@
+Spring Core
+-----------
+	- outsourcing the creation of objects and maintaining it's lifecyle to the spring core container
+	- main concept in IOC(Inversion Of Control) and DI(Dependency Injection)
+	- ways of configuration
+		- xml based configuration
+		- annotation based configuration
+		- java based configuration
+	- here we call the java classes which are managed by the spring core container as bean
+	- Bean scopes - singleton, prototype, session, request, application
+	- to work with spring core, we need external jar files - spring-core6, spring-context6 (we will use maven to manage the external jar/dependencies)
+		- https://maven.apache.org/what-is-maven.html
+		- https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+		- how do we work with maven?
+			- 2 ways
+				- install maven separately and work with it
+				- can use the maven plugin available in the IDE (recommended and used in demo)
+					- going forward we will create maven projects in eclipse
+Spring Boot
+-----------
+	- RAD (Rapid Application Development) Tool
+	- autoconfiguration, one place configuration
+	- for web application, we can have an embedded server in the spring boot project
+	- production ready projects
+	- ways to create spring boot project
+		- use eclipse STS(Spring Tool Suite)
+		- use the spring initializer website - https://start.spring.io/
+Spring MVC
+----------
+	- MVC ( Model View Controller)
+	- spring MVC use front controller design pattern
+	- references
+		https://start.spring.io/
+		https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/mvc.html
+Spring Rest
+------------
+
+Spring JDBC Template
+--------------------
+
+ORM - Object Relational Mapping
+-------------------------------
+	- mapping an object to a relation
+	- ORM is a concept
+
+JPA - Java Persistance API
+---------------------------
+	- JPA is a specification for the ORM concept
+
+ORM Framework
+-------------
+	- these are the implementations of the ORM concept
+	- eg: Hibernate, EclipseLink, IBatis
+	- it is advisable to use ORM frameworks that follow JPA specification
+
+
+Spring Data JPA
+---------------
+temporary/not so good solution for cyclic referencing
+------------------------------------------------------
+	@JsonManagedReference - marks forward part of the relation, nested data is fetched
+	@JsonBackReference - marks the backward part of the relation, nested data is not fetched
+good/correct solution for cyclic referencing
+------------------------------------
+	copy the data in entites to pojos
+
+Eager fetch and lazy fetch
+---------------------------
+ - whichever association mapping ends with many, the default fetch type is Lazy
+ - whichever association mapping ends with one, the default fetch type is Eager
+ - however if you want to change the fetch type, you can change by specifying the attribute fetchType
+
+how to execute queries other that the basic 5 crud operations?
+----------------------------------------------------------------
+	1. finder methods/ query methods
+	2. use @Query 
+		- can use JPQL (Java Persistence Querying Language)
+		- can use native SQL (Structured Querying Language)
+	reference  - https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html
+
+Input validation annotations
+----------------------------
+1. add the dependency
+	<dependency>
+      		<groupId>org.springframework.boot</groupId>
+      		<artifactId>spring-boot-starter-validation</artifactId>
+    	</dependency>
+2. use the input validations annotations on the fields of the pojo/entity that receives the input json data
+3. use @Valid along with @RequestBody annotation
+
+
+GlobalExceptionHandler
+----------------------
+
+Logging / AOP
+-------------
+
+Standard Steps to create a backend application
+-----------------------------------------------
+1) get the tables ready in the DB with some data
+2) create a spring boot project with necessary dependencies and import it in eclipse
+3) configure the datasource in application.properties
+4) create entities(with orm mappings) and pojos
+5) finish dao layer
+6) finish service layer
+7) finish controller layer
+8) start the application and test it using postman or swagger
