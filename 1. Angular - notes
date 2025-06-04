@@ -1,0 +1,100 @@
+Angular Roadmap
+----------------
+- intro
+--------
+	- we are creating SPA using angular
+	- to install angular we need npm(Node Package Manager), we can get npm by installing node js
+	- type the command in cmd to install angular
+	 	npm install -g @angular/cli@20.0.0
+		npm install -g @angular/cli@latest
+	- after installing angular check its version by typing
+		ng --version
+	- minimum angular version required is 17
+	- next create an angular project in a folder
+		ng new my-angular-demo-project
+	- open the angular project in vscode
+	- start the Angular Live Development Server by opening a terminal within vscode
+		ng serve
+	- next open a browser and request for the single page of your angular project
+		http://localhost:4200
+
+- Components
+-------------
+	- a component will have 4 files
+		- <componentname>.ts
+		- <componentname>.html
+		- <componentname>.css
+		- <componentname>.spec.ts
+	- to create a component
+		ng generate component display
+		ng g c display
+
+- string interpolation, property binding and event binding
+-----------------------------------------------------------
+    - one way binding
+	- string interpolation {{ }}
+	- event binding ()
+	- property binding []
+    - two way binding
+	- property binding [()]
+
+- pipes
+-------
+	- in-built pipes
+		https://v17.angular.io/guide/pipes-overview
+	- custom pipes
+		- to create custom pipes
+			ng generate pipe pipes/discount
+		- reference
+			https://angular.dev/tutorials/learn-angular/24-create-a-pipe
+
+- services
+-----------
+	ng generate service movies/services/movies
+
+- directives
+-------------
+	- reference
+		https://v17.angular.io/guide/built-in-directives
+
+- angular component lifecycle methods
+--------------------------------------
+	- https://v17.angular.io/guide/lifecycle-hooks
+	- refer countries component demo
+
+
+- parent child component communication using @Input/@Output
+------------------------------------------------------------
+	- refer countries component demo
+
+- handling form and form data with validation
+----------------------------------------------
+	- 2 types of forms
+		- template driven forms
+		------------------------
+			- here angular creates the FormControl object when we use ngModel within a form
+			- form validations
+		- reactive forms
+		-----------------
+			- here developer has to create the FormControl objects
+			- explore FormBuilder and FormArray
+	- reference
+		https://angular.dev/tutorials/learn-angular/15-forms
+
+- routing in angular
+--------------------
+- steps
+	- define route paths for the components in app.routes.ts
+	- specify the <router-outlet> tag in app.html. we are telling the routed components to be displayed below this tag
+	- test the route paths by typing them in the browser url and press enter
+	- routing can be done in 2 ways
+		- using routerLink
+			- navigation/routing id from the template
+			- we used routerLink and routerLinkActive
+		- programmatically routing
+			- navigation/routing is from the ts/component file
+			- we used Router and ActivatedRoute
+	- nested routing
+		- here we configure child routes for a component
+
+- HttpClient for communicating with backend application
